@@ -1,0 +1,31 @@
+{
+  "name": "metalife-log-webhook",
+  "version": "1.0.0",
+  "description": "Webhook API for Google Cloud Functions",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "functions-framework --target=webhook --signature-type=http",
+    "dev": "tsc-watch --onSuccess \"functions-framework --target=webhook --signature-type=http\"",
+    "dev:prod": "npm run build && npm run start",
+    "deploy": "gcloud functions deploy webhook --runtime=nodejs18 --trigger-http --allow-unauthenticated",
+    "lint": "eslint . --ext .ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "google-auth-library": "^9.15.0",
+    "googleapis": "^144.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.2.2"
+  }
+}
