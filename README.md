@@ -13,14 +13,42 @@
 ## Webhook URL
 
 ```bash
+# シンガク
 https://asia-northeast1-seiki-218912.cloudfunctions.net/metalife-log-webhook
+
+# 京都
+https://asia-northeast1-seiki-218912.cloudfunctions.net/metalife-log-webhook-kyoto
 ```
 
 ## Google Cloud Functions 管理画面
 
 ```bash
+# シンガク
 https://console.cloud.google.com/functions/details/asia-northeast1/metalife-log-webhook?env=gen2&inv=1&invt=AblLeA&project=seiki-218912&tab=source
+
+# 京都
+https://console.cloud.google.com/functions/details/asia-northeast1/metalife-log-webhook-kyoto?env=gen2&inv=1&invt=AblLeA&project=seiki-218912&tab=source
 ```
+
+
+## シートID
+
+### 生徒情報管理マスタ
+
+#### 京都
+17cGz95b0Z1qWUkVpcBH4HjSCCqpElAkoDpYEToMo2Us
+
+#### シンガク
+14o3-wervAs2fPsR6NtjgHqyjh6rQcxZFcGapxcSncCQ
+
+
+### Metalifeログ
+
+#### 京都
+19IOHM0xhrb4Gt6lIRYgKSJVjkknLpueFPnJb8YpRnCk
+
+#### シンガク
+1ctkzyt5OorqBcVrI1oqf5I90taMu60GPaIO4UxyRpRE
 
 
 ## 技術スタック
@@ -45,15 +73,28 @@ Metalifeの管理画面で操作
 ルームに入室、ルームから退出など
 ```
 
-## 本番環境デプロイ
+## 本番環境デプロイ (シンガク)
 
 ```bash
 gcloud functions deploy metalife-log-webhook \
-    --runtime nodejs18 \
+    --runtime nodejs22 \
     --trigger-http \
     --allow-unauthenticated \
     --entry-point webhook \
     --region asia-northeast1
+    --project seiki-218912
+```
+
+## 本番環境デプロイ (京都)
+
+```
+gcloud functions deploy metalife-log-webhook-kyoto \
+    --runtime nodejs22 \
+    --trigger-http \
+    --allow-unauthenticated \
+    --entry-point webhook \
+    --region asia-northeast1 \
+    --project seiki-218912
 ```
 
 ## Google Sheets
